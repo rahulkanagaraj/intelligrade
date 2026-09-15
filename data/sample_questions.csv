@@ -1,0 +1,9 @@
+question_id,question_text,subject
+Q001,"Define the second law of thermodynamics and state its formula for entropy change.",Physics
+Q002,"Explain the difference between supervised, unsupervised, and reinforcement learning paradigms.",Computer Science
+Q003,"Calculate the electric field intensity at a distance of 0.5 meters from a 4 micro-Coulomb point charge.",Physics
+Q004,"Compare and contrast bubble sort, merge sort, and quicksort with respect to their average and worst-case asymptotic time complexity.",Computer Science
+Q005,"Evaluate the ethical tradeoffs between strict regulatory AI compliance and open-source foundation model innovation.",Ethics & Law
+Q006,"Design an air-gapped, zero-trust microservice architecture for financial transaction auditing with cryptographic tamper-proofing.",Systems Engineering
+Q007,"List the five stages of mitosis in eukaryotic cell division.",Biology
+Q008,"Describe how insulin and glucagon regulate glucose homeostasis in the human bloodstream.",Physiology
