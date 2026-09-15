@@ -1,8 +1,24 @@
 """IntelliGrade: Air-Gapped Pedagogical Question Classifier & Cognitive Auditor."""
 
+import importlib
 import json
 import pandas as pd
 import streamlit as st
+
+import src.config
+import src.models
+import src.mock_engine
+import src.parser
+import src.ollama_client
+import src.ui_components
+
+# Hot-reload modules so long-running Streamlit servers never suffer from stale sys.modules
+importlib.reload(src.config)
+importlib.reload(src.models)
+importlib.reload(src.mock_engine)
+importlib.reload(src.parser)
+importlib.reload(src.ollama_client)
+importlib.reload(src.ui_components)
 
 from src.config import get_config, update_config
 from src.models import (
@@ -12,6 +28,7 @@ from src.models import (
     QuestionEvaluation,
 )
 from src.ollama_client import client
+from src.parser import sanitize_extracted_question
 from src.ui_components import (
     CUSTOM_CSS,
     compute_exam_balance_health,
@@ -22,7 +39,6 @@ from src.ui_components import (
     render_difficulty_histogram,
     render_distribution_chart,
 )
-from src.parser import sanitize_extracted_question
 
 # Set page layout and metadata
 st.set_page_config(
