@@ -177,110 +177,113 @@ def main():
                 st.warning("Please enter a question before analyzing.")
             else:
                 with st.spinner("Classifying cognitive depth and calibrating difficulty metrics..."):
-                    result: QuestionEvaluation = client.evaluate_question(question_input)
+                    st.session_state["single_result"] = client.evaluate_question(question_input)
 
-                # Visual cognitive step bar
-                st.markdown("#### 🎯 Cognitive Hierarchy Placement")
-                st.markdown(render_blooms_hierarchy_html(result.blooms_level), unsafe_allow_html=True)
+        if "single_result" in st.session_state and st.session_state["single_result"]:
+            result: QuestionEvaluation = st.session_state["single_result"]
 
-                if result.error_message:
-                    st.info(f"ℹ️ System Notice: {result.error_message}")
+            # Visual cognitive step bar
+            st.markdown("#### 🎯 Cognitive Hierarchy Placement")
+            st.markdown(render_blooms_hierarchy_html(result.blooms_level), unsafe_allow_html=True)
 
-                # Metrics Row
-                col_left, col_right = st.columns([1, 1])
+            if result.error_message:
+                st.info(f"ℹ️ System Notice: {result.error_message}")
 
-                with col_left:
-                    # Gauge visualization
-                    gauge_fig = render_difficulty_gauge(result.difficulty_score)
-                    st.plotly_chart(gauge_fig, use_container_width=True)
+            # Metrics Row
+            col_left, col_right = st.columns([1, 1])
 
-                with col_right:
-                    # Level Card
-                    lvl_color = BLOOMS_COLORS[result.blooms_level]
-                    st.markdown(
-                        f"""
-                        <div class="pedagogy-card" style="border-left: 6px solid {lvl_color};">
-                            <div class="card-title">
-                                <span style="font-size: 1.4rem;">🏷️</span>
-                                <span style="color: {lvl_color}; font-size: 1.3rem;">Level {result.blooms_level_index}: {result.blooms_level.value}</span>
-                            </div>
-                            <div class="card-content" style="margin-bottom: 0.8rem;">
-                                {BLOOMS_DESCRIPTIONS[result.blooms_level]}
-                            </div>
-                            <div>
-                                <strong>Cognitive Action Verbs:</strong><br/>
-                                {''.join([f'<span class="tag-pill verb-pill">{v}</span>' for v in result.action_verbs]) if result.action_verbs else '<span style="opacity:0.6;">Implicit directive</span>'}
-                            </div>
-                            <div style="margin-top: 0.5rem;">
-                                <strong>Key Domain Concepts:</strong><br/>
-                                {''.join([f'<span class="tag-pill keyword-pill">{k}</span>' for k in result.keywords_identified]) if result.keywords_identified else '<span style="opacity:0.6;">General domain</span>'}
-                            </div>
+            with col_left:
+                # Gauge visualization
+                gauge_fig = render_difficulty_gauge(result.difficulty_score)
+                st.plotly_chart(gauge_fig, use_container_width=True)
+
+            with col_right:
+                # Level Card
+                lvl_color = BLOOMS_COLORS[result.blooms_level]
+                st.markdown(
+                    f"""
+                    <div class="pedagogy-card" style="border-left: 6px solid {lvl_color};">
+                        <div class="card-title">
+                            <span style="font-size: 1.4rem;">🏷️</span>
+                            <span style="color: {lvl_color}; font-size: 1.3rem;">Level {result.blooms_level_index}: {result.blooms_level.value}</span>
                         </div>
-                        """,
-                        unsafe_allow_html=True,
-                    )
-
-                # Structured Pedagogical Cards
-                col_p1, col_p2 = st.columns(2)
-
-                with col_p1:
-                    st.markdown(
-                        f"""
-                        <div class="pedagogy-card" style="border-top: 4px solid #3b82f6;">
-                            <div class="card-title" style="color: #60a5fa;">
-                                <span>🧠</span> Pedagogical Reasoning
-                            </div>
-                            <div class="card-content">
-                                {result.pedagogical_reasoning}
-                            </div>
+                        <div class="card-content" style="margin-bottom: 0.8rem;">
+                            {BLOOMS_DESCRIPTIONS[result.blooms_level]}
                         </div>
-                        """,
-                        unsafe_allow_html=True,
-                    )
-
-                with col_p2:
-                    st.markdown(
-                        f"""
-                        <div class="pedagogy-card" style="border-top: 4px solid #10b981;">
-                            <div class="card-title" style="color: #34d399;">
-                                <span>💡</span> Actionable Improvement Suggestions
-                            </div>
-                            <div class="card-content">
-                                {result.improvement_suggestions}
-                            </div>
+                        <div>
+                            <strong>Cognitive Action Verbs:</strong><br/>
+                            {''.join([f'<span class="tag-pill verb-pill">{v}</span>' for v in result.action_verbs]) if result.action_verbs else '<span style="opacity:0.6;">Implicit directive</span>'}
                         </div>
-                        """,
-                        unsafe_allow_html=True,
-                    )
-
-                # Cognitive Elevator Section
-                if result.cognitive_elevations:
-                    st.markdown("#### 🚀 Cognitive Elevator: Rephrasing for Higher Bloom Tiers")
-                    cols_elev = st.columns(len(result.cognitive_elevations))
-                    for idx_elev, (elev_lvl, elev_text) in enumerate(result.cognitive_elevations.items()):
-                        with cols_elev[idx_elev]:
-                            st.markdown(
-                                f"""
-                                <div class="pedagogy-card" style="border-top: 3px solid #8b5cf6; min-height: 140px;">
-                                    <div class="card-title" style="color: #a78bfa; font-size: 0.95rem;">
-                                        <span>⤴️</span> {elev_lvl}
-                                    </div>
-                                    <div class="card-content" style="font-size: 0.88rem;">
-                                        <em>"{elev_text}"</em>
-                                    </div>
-                                </div>
-                                """,
-                                unsafe_allow_html=True,
-                            )
-
-                # Footer metadata & raw JSON expander
-                st.caption(
-                    f"Evaluated via **{result.evaluation_source}** | "
-                    f"Latency: **{result.latency_seconds or 0.0}s**"
+                        <div style="margin-top: 0.5rem;">
+                            <strong>Key Domain Concepts:</strong><br/>
+                            {''.join([f'<span class="tag-pill keyword-pill">{k}</span>' for k in result.keywords_identified]) if result.keywords_identified else '<span style="opacity:0.6;">General domain</span>'}
+                        </div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
                 )
 
-                with st.expander("🔍 View Raw Evaluation Audit Payload (JSON)"):
-                    st.code(json.dumps(result.model_dump(), indent=2), language="json")
+            # Structured Pedagogical Cards
+            col_p1, col_p2 = st.columns(2)
+
+            with col_p1:
+                st.markdown(
+                    f"""
+                    <div class="pedagogy-card" style="border-top: 4px solid #3b82f6;">
+                        <div class="card-title" style="color: #60a5fa;">
+                            <span>🧠</span> Pedagogical Reasoning
+                        </div>
+                        <div class="card-content">
+                            {result.pedagogical_reasoning}
+                        </div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
+                )
+
+            with col_p2:
+                st.markdown(
+                    f"""
+                    <div class="pedagogy-card" style="border-top: 4px solid #10b981;">
+                        <div class="card-title" style="color: #34d399;">
+                            <span>💡</span> Actionable Improvement Suggestions
+                        </div>
+                        <div class="card-content">
+                            {result.improvement_suggestions}
+                        </div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
+                )
+
+            # Cognitive Elevator Section
+            if result.cognitive_elevations:
+                st.markdown("#### 🚀 Cognitive Elevator: Rephrasing for Higher Bloom Tiers")
+                cols_elev = st.columns(len(result.cognitive_elevations))
+                for idx_elev, (elev_lvl, elev_text) in enumerate(result.cognitive_elevations.items()):
+                    with cols_elev[idx_elev]:
+                        st.markdown(
+                            f"""
+                            <div class="pedagogy-card" style="border-top: 3px solid #8b5cf6; min-height: 140px;">
+                                <div class="card-title" style="color: #a78bfa; font-size: 0.95rem;">
+                                    <span>⤴️</span> {elev_lvl}
+                                </div>
+                                <div class="card-content" style="font-size: 0.88rem;">
+                                    <em>"{elev_text}"</em>
+                                </div>
+                            </div>
+                            """,
+                            unsafe_allow_html=True,
+                        )
+
+            # Footer metadata & raw JSON expander
+            st.caption(
+                f"Evaluated via **{result.evaluation_source}** | "
+                f"Latency: **{result.latency_seconds or 0.0}s**"
+            )
+
+            with st.expander("🔍 View Raw Evaluation Audit Payload (JSON)"):
+                st.code(json.dumps(result.model_dump(), indent=2), language="json")
 
     # =========================================================================
     # TAB 2: BATCH ASSESSMENT PIPELINE
@@ -330,20 +333,25 @@ def main():
 
         st.info(f"Loaded **{len(questions_to_process)}** question(s) for evaluation.")
 
-        if st.button("⚡ Run Batch Cognitive Audit", type="primary", disabled=len(questions_to_process) == 0):
+        btn_run_batch = st.button("⚡ Run Batch Cognitive Audit", type="primary", disabled=len(questions_to_process) == 0)
+
+        if btn_run_batch:
             progress_bar = st.progress(0)
             status_text = st.empty()
-            batch_results = []
 
             def update_ui(current, total, item_res):
                 progress_bar.progress(current / total)
                 status_text.text(f"Evaluated question {current}/{total}: {item_res.question[:45]}...")
 
-            batch_results = client.evaluate_batch(
+            results = client.evaluate_batch(
                 questions_to_process,
                 progress_callback=update_ui,
             )
-            status_text.success(f"Batch evaluation complete! {len(batch_results)} questions audited.")
+            st.session_state["batch_results"] = results
+            status_text.success(f"Batch evaluation complete! {len(results)} questions audited.")
+
+        if "batch_results" in st.session_state and st.session_state["batch_results"]:
+            batch_results = st.session_state["batch_results"]
 
             # Summary Metrics & Pedagogical Balance Assessment
             diffs = [r.difficulty_score for r in batch_results]
