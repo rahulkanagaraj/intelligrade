@@ -9,6 +9,61 @@ from src.models import BloomsLevel, QuestionEvaluation
 logger = logging.getLogger(__name__)
 
 
+def sanitize_extracted_question(raw_text: str) -> str:
+    """
+    Clean and normalize noisy text extracted from exam PDFs (via pdfplumber/pypdf).
+    Handles:
+    - Question numbering prefixes like 'Q1.', '1. (a)', 'Question 3:', '(b)'
+    - Marks allocations like '[5 Marks]', '(10 pts)', '[3 marks]'
+    - Broken inline newlines from narrow PDF text columns
+    - Common unicode ligatures (fi, fl, smart quotes, em-dashes)
+    - Stray headers/footers like 'Page 1 of 4' or 'Turn Over'
+    """
+    if not raw_text:
+        return ""
+
+    text = str(raw_text)
+
+    # 1. Unicode ligature and punctuation normalization
+    ligatures = {
+        "\ufb01": "fi",
+        "\ufb02": "fl",
+        "\u2019": "'",
+        "\u2018": "'",
+        "\u201c": '"',
+        "\u201d": '"',
+        "\u2013": "-",
+        "\u2014": "-",
+        "\u00a0": " ",
+    }
+    for k, v in ligatures.items():
+        text = text.replace(k, v)
+
+    # 2. Strip pagination or exam booklet artifacts
+    text = re.sub(r"(?i)\bPage\s+\d+\s+of\s+\d+\b", "", text)
+    text = re.sub(r"(?i)\[\s*turn\s+over\s*\]|\(\s*turn\s+over\s*\)", "", text)
+    text = re.sub(r"(?i)\b(?:PTO|Contd\.\.\.)\b", "", text)
+
+    # 3. Strip marks/points allocations (e.g., [5 Marks], (10 points), [3 pts])
+    text = re.sub(r"(?i)\[\s*\d+\s*(?:marks?|pts?|points?)\s*\]", "", text)
+    text = re.sub(r"(?i)\(\s*\d+\s*(?:marks?|pts?|points?)\s*\)", "", text)
+
+    # 4. Strip leading question numbers (e.g., '1.', 'Q1:', 'Question 4(a).', '(ii)')
+    text = re.sub(
+        r"^(?:\s*Q(?:uestion)?\s*\d+[\.\:\)]?\s*(?:\([a-zA-Z0-9]+\))?|\s*\d+[\.\:\)]\s*(?:\([a-zA-Z0-9]+\))?|\s*\([a-zA-Z0-9ivx]+\))\s*",
+        "",
+        text.strip(),
+        flags=re.IGNORECASE,
+    )
+
+    # 5. Normalize broken single linebreaks from narrow PDF columns into single spaces
+    text = re.sub(r"(?<!\n)\n(?!\n)", " ", text)
+    # Collapse multiple spaces into one
+    text = re.sub(r"[ \t]+", " ", text).strip()
+
+    return text
+
+
 def clean_markdown_fences(text: str) -> str:
     """Strip markdown code fences such as ```json ... ``` or ``` ... ```."""
     text = text.strip()

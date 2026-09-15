@@ -22,6 +22,7 @@ from src.ui_components import (
     render_difficulty_histogram,
     render_distribution_chart,
 )
+from src.parser import sanitize_extracted_question
 
 # Set page layout and metadata
 st.set_page_config(
@@ -316,7 +317,8 @@ def main():
                 value=sample_batch,
                 height=160,
             )
-            questions_to_process = [line.strip() for line in raw_text.splitlines() if line.strip()]
+            raw_lines = [line.strip() for line in raw_text.splitlines() if line.strip()]
+            questions_to_process = [sanitize_extracted_question(q) for q in raw_lines if sanitize_extracted_question(q)]
 
         else:
             uploaded_file = st.file_uploader("Upload CSV containing question list", type=["csv"])
@@ -329,7 +331,9 @@ def main():
                         "Select column containing question text:",
                         options=df_upload.columns.tolist(),
                     )
-                    questions_to_process = df_upload[col_choice].dropna().astype(str).tolist()
+                    raw_extracted = df_upload[col_choice].dropna().astype(str).tolist()
+                    questions_to_process = [sanitize_extracted_question(q) for q in raw_extracted if sanitize_extracted_question(q)]
+                    st.caption(f"Sanitized and prepared **{len(questions_to_process)}** questions (stripped numbering, marks, PDF artifacts).")
                 except Exception as e:
                     st.error(f"Error reading CSV: {e}")
 

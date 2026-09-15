@@ -111,5 +111,23 @@ class TestParser(unittest.TestCase):
         self.assertEqual(res_garbage.question, "Test Q")
 
 
+    def test_sanitize_extracted_question(self):
+        from src.parser import sanitize_extracted_question
+        raw = "Q1. (a) [5 Marks] Deﬁne what is an eigenvalue and state its algebraic deﬁnition. Page 1 of 4"
+        cleaned = sanitize_extracted_question(raw)
+        self.assertNotIn("Q1. (a)", cleaned)
+        self.assertNotIn("[5 Marks]", cleaned)
+        self.assertNotIn("Page 1 of 4", cleaned)
+        self.assertIn("Define what is an eigenvalue", cleaned)
+        self.assertIn("algebraic definition", cleaned)
+
+        raw_multiline = "2. Explain how a\nconvolutional neural network\nextracts features. (10 pts) [TURN OVER]"
+        cleaned_multi = sanitize_extracted_question(raw_multiline)
+        self.assertNotIn("2.", cleaned_multi)
+        self.assertNotIn("(10 pts)", cleaned_multi)
+        self.assertNotIn("[TURN OVER]", cleaned_multi)
+        self.assertEqual(cleaned_multi, "Explain how a convolutional neural network extracts features.")
+
+
 if __name__ == "__main__":
     unittest.main()
