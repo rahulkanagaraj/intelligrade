@@ -55,18 +55,4 @@ intelligrade/
 
 ## ⚡ Quick Start
 
-### 1. Install Dependencies
-```bash
-py -m pip install streamlit pdfplumber pypdf reportlab pandas kaggle
-```
 
-### 2. Run Automated Verification Tests
-```bash
-py test_data_engineer.py
-```
-
-### 3. Launch Streamlit Web App
-```bash
-py -m streamlit run app.py
-```
-Open your browser at `http://localhost:8501`.
