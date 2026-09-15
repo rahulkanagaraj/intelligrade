@@ -1,0 +1,497 @@
+=== Question 1 of 200 ===
+Statement: All students who attend the placement training practice aptitude regularly. Ravi attends the placement training. Which conclusion follows?
+
+A) Ravi will definitely get placed
+B) Ravi will score the highest marks
+C) Ravi practices aptitude regularly
+D) Ravi is the best student in the class
+
+--------------------------
+
+=== Question 2 of 200 ===
+Statement: The college increased training hours because students performed poorly in the aptitude test. What was the cause?
+
+A) Increased training hours
+B) College examination
+C) Poor performance in aptitude test
+D) Student attendance
+
+--------------------------
+
+=== Question 3 of 200 ===
+Statement: All students who submit assignments on time receive internal marks. Arun submitted his assignment on time. Conclusion:
+
+A) Arun will get full marks
+B) Arun will receive internal marks
+C) Arun will be absent
+D) Arun will not write the examination
+
+--------------------------
+
+=== Question 4 of 200 ===
+Statement: The road was closed because of heavy flooding. Which is the effect?
+
+A) Heavy flooding
+B) Rain
+C) Road closure
+D) Water
+
+--------------------------
+
+=== Question 5 of 200 ===
+Statement: Students are advised to carry an umbrella because rain is expected. What is the assumption?
+
+A) Students like umbrellas
+B) Umbrellas are expensive
+C) Students may get wet if it rains
+D) Students will not attend college
+
+--------------------------
+
+=== Question 6 of 200 ===
+Statement: All final-year students must attend the placement orientation programme. Which conclusion follows?
+
+A) Only selected students should attend
+B) Final-year students are required to attend
+C) First-year students must attend
+D) No student should attend
+
+--------------------------
+
+=== Question 7 of 200 ===
+Statement: The library extended its working hours during examinations. What is the most reasonable reason?
+
+A) Students stopped studying
+B) Students need more time to use library resources
+C) Teachers are absent
+D) Books are unavailable
+
+--------------------------
+
+=== Question 8 of 200 ===
+Statement: Ravi scored 85 marks because he practiced many questions. Which is the effect?
+
+A) Practice
+B) Questions
+C) 85 marks
+D) Examination
+
+--------------------------
+
+=== Question 9 of 200 ===
+Statement: If it rains heavily, the cricket match will be cancelled. It rained heavily. What can be concluded?
+
+A) The match definitely continued
+B) The match will be cancelled
+C) The players went home yesterday
+D) The match was played indoors
+
+--------------------------
+
+=== Question 10 of 200 ===
+Statement: All buses arriving after 9 AM are not allowed inside the campus. Bus A arrived at 9:30 AM. Conclusion:
+
+A) Bus A entered the campus
+B) Bus A is not allowed inside the campus
+C) Bus A arrived before 9 AM
+D) Bus A was empty
+
+--------------------------
+
+=== Question 11 of 200 ===
+Statement: The students requested additional aptitude classes before the placement test. Which assumption is most reasonable?
+
+A) Students dislike aptitude
+B) Students need additional preparation
+C) The placement test was cancelled
+D) Students have completed all preparation
+
+--------------------------
+
+=== Question 12 of 200 ===
+Statement: The computer lab was closed because the computers were being repaired. What is the cause?
+
+A) Lab closure
+B) Computer repair
+C) Students
+D) Examination
+
+--------------------------
+
+=== Question 13 of 200 ===
+Statement: Regular exercise improves physical fitness. Ravi exercises regularly. Which conclusion is reasonable?
+
+A) Ravi will become an athlete
+B) Ravi may improve his physical fitness
+C) Ravi will never become tired
+D) Ravi will win a competition
+
+--------------------------
+
+=== Question 14 of 200 ===
+Statement: Students who do not submit the form cannot participate in the event. Kumar did not submit the form. Conclusion:
+
+A) Kumar definitely participated
+B) Kumar cannot participate in the event
+C) Kumar organised the event
+D) Kumar submitted another form
+
+--------------------------
+
+=== Question 15 of 200 ===
+Which is the strongest argument for conducting mock interviews?
+
+A) They reduce the number of students
+B) They provide practice for real interviews
+C) They replace technical interviews
+D) They guarantee placement
+
+--------------------------
+
+=== Question 16 of 200 ===
+Statement: The college arranged additional buses because many students were travelling home. What is the cause?
+
+A) Additional buses
+B) College closure
+C) Many students travelling home
+D) Bus drivers
+
+--------------------------
+
+=== Question 17 of 200 ===
+Statement: Every student who clears the aptitude round proceeds to the technical round. Priya cleared the aptitude round. Conclusion:
+
+A) Priya failed the technical round
+B) Priya proceeds to the technical round
+C) Priya skipped the aptitude round
+D) Priya is already placed
+
+--------------------------
+
+=== Question 18 of 200 ===
+Which of the following is an assumption? Statement: "Use a helmet while riding a bike."
+
+A) Helmets are fashionable
+B) A helmet can provide protection in an accident
+C) Bikes are expensive
+D) Roads are always safe
+
+--------------------------
+
+=== Question 19 of 200 ===
+Statement: The college introduced a coding club after students requested more programming practice. Which conclusion is most reasonable?
+
+A) Students dislike programming
+B) Students wanted more programming practice
+C) Coding is no longer required
+D) The college cancelled programming classes
+
+--------------------------
+
+=== Question 20 of 200 ===
+Statement: All students who scored above 80% were selected for the next round. Ravi scored 85%. Conclusion:
+
+A) Ravi scored below 80%
+B) Ravi was selected for the next round
+C) Ravi did not attend the test
+D) Ravi failed the next round
+
+--------------------------
+
+=== Question 21 of 200 ===
+Statements: All engineers are graduates. Ravi is an engineer. Therefore:
+
+A) Ravi is a teacher
+B) Ravi is a student
+C) Ravi is a graduate
+D) Ravi is a doctor
+
+--------------------------
+
+=== Question 22 of 200 ===
+Statements: All laptops are computers. Some computers are expensive. Which conclusion definitely follows?
+
+A) All laptops are expensive
+B) Some laptops are expensive
+C) All laptops are computers
+D) No laptop is expensive
+
+--------------------------
+
+=== Question 23 of 200 ===
+Statements: Some students are programmers. All programmers are logical thinkers. Conclusion:
+
+A) All students are programmers
+B) Some students are logical thinkers
+C) No student is a programmer
+D) All logical thinkers are students
+
+--------------------------
+
+=== Question 24 of 200 ===
+Statements: No cats are dogs. Tom is a cat. Therefore:
+
+A) Tom is a dog
+B) Tom is not a dog
+C) Tom is both
+D) Cannot say
+
+--------------------------
+
+=== Question 25 of 200 ===
+Statements: All books are useful. Some books are novels. Which conclusion follows?
+
+A) All useful things are books
+B) Some novels are useful
+C) No novel is useful
+D) All novels are books
+
+--------------------------
+
+=== Question 26 of 200 ===
+Statements: All teachers are educated. Some educated people are writers. Which is definitely true?
+
+A) All teachers are writers
+B) Some teachers are writers
+C) All teachers are educated
+D) No teacher is educated
+
+--------------------------
+
+=== Question 27 of 200 ===
+Which relationship is correct?
+
+A) Dogs are outside Animals
+B) Dogs are a subset of Animals
+C) Animals are a subset of Dogs
+D) Dogs and Animals never overlap
+
+--------------------------
+
+=== Question 28 of 200 ===
+Which Venn relationship represents "All roses are flowers"?
+
+A) Two separate circles
+B) Rose circle completely inside Flower circle
+C) Flower circle inside Rose circle
+D) Two overlapping circles with no complete inclusion
+
+--------------------------
+
+=== Question 29 of 200 ===
+Statements: Some cars are electric. All electric cars are vehicles. Conclusion:
+
+A) All cars are electric
+B) Some cars are vehicles
+C) No car is a vehicle
+D) All vehicles are electric cars
+
+--------------------------
+
+=== Question 30 of 200 ===
+Statements: All apples are fruits. All fruits are food. Therefore:
+
+A) All food is fruit
+B) All apples are food
+C) No apple is food
+D) Some food is not fruit
+
+--------------------------
+
+=== Question 31 of 200 ===
+Statements: No teachers are students. Ravi is a teacher. Therefore:
+
+A) Ravi is a student
+B) Ravi is not a student
+C) Ravi is both
+D) Ravi is a graduate
+
+--------------------------
+
+=== Question 32 of 200 ===
+Statements: Some programmers are gamers. Some gamers are athletes. Which statement is definitely true?
+
+A) All programmers are athletes
+B) Some programmers are gamers
+C) All athletes are programmers
+D) No gamer is a programmer
+
+--------------------------
+
+=== Question 33 of 200 ===
+If all A are B and all B are C, then:
+
+A) No A is C
+B) Some C are not A
+C) All A are C
+D) All C are A
+
+--------------------------
+
+=== Question 34 of 200 ===
+If no A is B, which statement is true?
+
+A) Every A is B
+B) A and B do not overlap
+C) Some A are B
+D) All B are A
+
+--------------------------
+
+=== Question 35 of 200 ===
+Statements: All doctors are professionals. Some doctors are teachers. Therefore:
+
+A) No doctor is a professional
+B) Some teachers are professionals
+C) All professionals are doctors
+D) No teacher is a doctor
+
+--------------------------
+
+=== Question 36 of 200 ===
+Which group is a subset of "Vehicles"?
+
+A) Trees
+B) Books
+C) Cars
+D) Fruits
+
+--------------------------
+
+=== Question 37 of 200 ===
+Statements: Some engineers are managers. All managers are employees. Therefore:
+
+A) All engineers are employees
+B) Some engineers are employees
+C) No engineers are employees
+D) All employees are engineers
+
+--------------------------
+
+=== Question 38 of 200 ===
+All smartphones are electronic devices. Which statement is correct?
+
+A) All electronic devices are smartphones
+B) Every smartphone is an electronic device
+C) No smartphone is electronic
+D) Some smartphones are not devices
+
+--------------------------
+
+=== Question 39 of 200 ===
+No birds are mammals. Which statement is correct?
+
+A) All birds are mammals
+B) Birds and mammals are separate groups
+C) Some birds are mammals
+D) All mammals are birds
+
+--------------------------
+
+=== Question 40 of 200 ===
+Some students are athletes. What does this mean?
+
+A) Every student is an athlete
+B) No student is an athlete
+C) At least one student is an athlete
+D) Every athlete is a student
+
+--------------------------
+
+=== Question 41 of 200 ===
+If CAT is coded as DBU, how is DOG coded?
+
+A) DPH
+B) EPH
+C) EOG
+D) FPH
+
+--------------------------
+
+=== Question 42 of 200 ===
+If BOOK is coded as CPPL, how is PEN coded?
+
+A) ODM
+B) QFO
+C) PFM
+D) QEN
+
+--------------------------
+
+=== Question 43 of 200 ===
+If A = 1, B = 2, ..., Z = 26, what is the value of CAT?
+
+A) 22
+B) 24
+C) 25
+D) 26
+
+--------------------------
+
+=== Question 44 of 200 ===
+If the letters of a word are shifted one position forward, what is the code for MANGO?
+
+A) LZMFN
+B) NBOHP
+C) NANGP
+D) MBOHP
+
+--------------------------
+
+=== Question 45 of 200 ===
+If PEN = 35 using P=16, E=5, N=14, what is CAT?
+
+A) 22
+B) 24
+C) 25
+D) 26
+
+--------------------------
+
+=== Question 46 of 200 ===
+If + means × and × means +, find 4 + 3 × 2.
+
+A) 9
+B) 14
+C) 20
+D) 10
+
+--------------------------
+
+=== Question 47 of 200 ===
+If − means + and + means −, find 15 − 7.
+
+A) 8
+B) 22
+C) 105
+D) 7
+
+--------------------------
+
+=== Question 48 of 200 ===
+If @ means ÷, then 20 @ 5 = ?
+
+A) 100
+B) 4
+C) 15
+D) 25
+
+--------------------------
+
+=== Question 49 of 200 ===
+If # means × and $ means +, find 4 # 3 $ 2.
+
+A) 10
+B) 14
+C) 20
+D) 24
+
+--------------------------
+
+=== Question 50 of 200 ===
+Book : Read :: Food : ?
+
+A) Cook
+B) Eat
+C) Drink
+D) Buy

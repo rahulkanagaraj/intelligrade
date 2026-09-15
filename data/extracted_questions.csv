@@ -1,0 +1,51 @@
+question_id,question_number,question_text,marks
+EXT_Q001,2.,Each question carries 2 marks. Select the single best answer for each question.,N/A
+EXT_Q002,Q1.,Statement: All students who attend the placement training practice aptitude regularly. Ravi attends the placement training. Which conclusion follows? A) Ravi will definitely get placed B) Ravi will score the highest marks C) Ravi practices aptitude regularly D) Ravi is the best student in the class,2
+EXT_Q003,Q2.,Statement: The college increased training hours because students performed poorly in the aptitude test. What was the cause? A) Increased training hours C) Poor performance in aptitude test D) Student attendance,2
+EXT_Q004,Q3.,Statement: All students who submit assignments on time receive internal marks. Arun submitted his assignment on time. Conclusion: A) Arun will get full marks B) Arun will receive internal marks C) Arun will be absent,N/A
+EXT_Q005,Q4.,Statement: The road was closed because of heavy flooding. Which is the effect? A) Heavy flooding B) Rain C) Road closure D) Water,2
+EXT_Q006,Q5.,Statement: Students are advised to carry an umbrella because rain is expected. What is the assumption? A) Students like umbrellas B) Umbrellas are expensive C) Students may get wet if it rains D) Students will not attend college,2
+EXT_Q007,Q6.,Statement: All final-year students must attend the placement orientation programme. Which conclusion follows? A) Only selected students should attend B) Final-year students are required to attend C) First-year students must attend D) No student should attend A) Students stopped studying B) Students need more time to use library resources C) Teachers are absent D) Books are unavailable,2
+EXT_Q008,Q8.,Statement: Ravi scored 85 marks because he practiced many questions. Which is the effect? A) Practice B) Questions C) 85 marks,N/A
+EXT_Q009,Q9.,"Statement: If it rains heavily, the cricket match will be cancelled. It rained heavily. What can be concluded? A) The match definitely continued B) The match will be cancelled C) The players went home yesterday D) The match was played indoors",2
+EXT_Q010,Q10.,Statement: All buses arriving after 9 AM are not allowed inside the campus. Bus A arrived at 9:30 AM. Conclusion: A) Bus A entered the campus B) Bus A is not allowed inside the campus C) Bus A arrived before 9 AM D) Bus A was empty,2
+EXT_Q011,Q11.,Statement: The students requested additional aptitude classes before the placement test. Which assumption is most reasonable? A) Students dislike aptitude B) Students need additional preparation C) The placement test was cancelled D) Students have completed all preparation,2
+EXT_Q012,Q12.,Statement: The computer lab was closed because the computers were being repaired. What is the cause? A) Lab closure B) Computer repair C) Students,N/A
+EXT_Q013,Q13.,Statement: Regular exercise improves physical fitness. Ravi exercises regularly. Which conclusion is reasonable? A) Ravi will become an athlete B) Ravi may improve his physical fitness C) Ravi will never become tired D) Ravi will win a competition,2
+EXT_Q014,Q14.,Statement: Students who do not submit the form cannot participate in the event. Kumar did not submit the form. Conclusion: A) Kumar definitely participated B) Kumar cannot participate in the event C) Kumar organised the event D) Kumar submitted another form,2
+EXT_Q015,Q15.,Which is the strongest argument for conducting mock interviews? A) They reduce the number of students B) They provide practice for real interviews C) They replace technical interviews D) They guarantee placement,2
+EXT_Q016,Q16.,Statement: The college arranged additional buses because many students were travelling home. What is the cause? A) Additional buses B) College closure C) Many students travelling home D) Bus drivers,2
+EXT_Q017,Q17.,Statement: Every student who clears the aptitude round proceeds to the technical round. Priya cleared the aptitude round. Conclusion: A) Priya failed the technical round B) Priya proceeds to the technical round C) Priya skipped the aptitude round D) Priya is already placed,2
+EXT_Q018,Q18.,Which of the following is an assumption? Statement: 'Use a helmet while riding a bike.' A) Helmets are fashionable B) A helmet can provide protection in an accident C) Bikes are expensive D) Roads are always safe,2
+EXT_Q019,Q19.,Statement: The college introduced a coding club after students requested more programming practice. Which conclusion is most reasonable? A) Students dislike programming B) Students wanted more programming practice C) Coding is no longer required D) The college cancelled programming classes,2
+EXT_Q020,Q20.,Statement: All students who scored above 80% were selected for the next round. Ravi scored 85%. Conclusion: A) Ravi scored below 80% B) Ravi was selected for the next round C) Ravi did not attend the test D) Ravi failed the next round,2
+EXT_Q021,Q21.,Statements: All engineers are graduates. Ravi is an engineer. Therefore: A) Ravi is a teacher B) Ravi is a student C) Ravi is a graduate D) Ravi is a doctor,2
+EXT_Q022,Q22.,Statements: All laptops are computers. Some computers are expensive. Which conclusion definitely follows? A) All laptops are expensive B) Some laptops are expensive C) All laptops are computers D) No laptop is expensive,2
+EXT_Q023,Q23.,Statements: Some students are programmers. All programmers are logical thinkers. Conclusion: A) All students are programmers B) Some students are logical thinkers C) No student is a programmer D) All logical thinkers are students,2
+EXT_Q024,Q24.,Statements: No cats are dogs. Tom is a cat. Therefore: A) Tom is a dog B) Tom is not a dog C) Tom is both D) Cannot say,2
+EXT_Q025,Q25.,Statements: All books are useful. Some books are novels. Which conclusion follows? A) All useful things are books B) Some novels are useful C) No novel is useful D) All novels are books,2
+EXT_Q026,Q26.,Statements: All teachers are educated. Some educated people are writers. Which is definitely true? A) All teachers are writers B) Some teachers are writers C) All teachers are educated D) No teacher is educated,2
+EXT_Q027,Q27.,Which relationship is correct? A) Dogs are outside Animals B) Dogs are a subset of Animals C) Animals are a subset of Dogs D) Dogs and Animals never overlap,2
+EXT_Q028,Q28.,Which Venn relationship represents 'All roses are flowers'? A) Two separate circles B) Rose circle completely inside Flower circle C) Flower circle inside Rose circle D) Two overlapping circles with no complete inclusion,2
+EXT_Q029,Q29.,Statements: Some cars are electric. All electric cars are vehicles. Conclusion: A) All cars are electric B) Some cars are vehicles C) No car is a vehicle D) All vehicles are electric cars,2
+EXT_Q030,Q30.,Statements: All apples are fruits. All fruits are food. Therefore: A) All food is fruit B) All apples are food C) No apple is food D) Some food is not fruit,2
+EXT_Q031,Q31.,Statements: No teachers are students. Ravi is a teacher. Therefore: A) Ravi is a student B) Ravi is not a student C) Ravi is both D) Ravi is a graduate,2
+EXT_Q032,Q32.,Statements: Some programmers are gamers. Some gamers are athletes. Which statement is definitely true? A) All programmers are athletes B) Some programmers are gamers C) All athletes are programmers D) No gamer is a programmer,2
+EXT_Q033,Q33.,"If all A are B and all B are C, then: A) No A is C B) Some C are not A C) All A are C D) All C are A",2
+EXT_Q034,Q34.,"If no A is B, which statement is true? A) Every A is B B) A and B do not overlap C) Some A are B D) All B are A",2
+EXT_Q035,Q35.,Statements: All doctors are professionals. Some doctors are teachers. Therefore: A) No doctor is a professional B) Some teachers are professionals C) All professionals are doctors D) No teacher is a doctor,2
+EXT_Q036,Q36.,Which group is a subset of 'Vehicles'? A) Trees B) Books C) Cars D) Fruits,2
+EXT_Q037,Q37.,Statements: Some engineers are managers. All managers are employees. Therefore: A) All engineers are employees B) Some engineers are employees C) No engineers are employees D) All employees are engineers,2
+EXT_Q038,Q38.,All smartphones are electronic devices. Which statement is correct? A) All electronic devices are smartphones B) Every smartphone is an electronic device C) No smartphone is electronic D) Some smartphones are not devices,2
+EXT_Q039,Q39.,No birds are mammals. Which statement is correct? A) All birds are mammals B) Birds and mammals are separate groups C) Some birds are mammals D) All mammals are birds,2
+EXT_Q040,Q40.,Some students are athletes. What does this mean? A) Every student is an athlete B) No student is an athlete C) At least one student is an athlete D) Every athlete is a student,2
+EXT_Q041,Q41.,"If CAT is coded as DBU, how is DOG coded? A) DPH B) EPH C) EOG D) FPH",2
+EXT_Q042,Q42.,"If BOOK is coded as CPPL, how is PEN coded? A) ODM B) QFO C) PFM D) QEN",2
+EXT_Q043,Q43.,"If A = 1, B = 2, ..., Z = 26, what is the value of CAT? A) 22 B) 24 C) 25 D) 26",2
+EXT_Q044,Q44.,"If the letters of a word are shifted one position forward, what is the code for MANGO? A) LZMFN B) NBOHP C) NANGP D) MBOHP",2
+EXT_Q045,Q45.,"If PEN = 35 using P=16, E=5, N=14, what is CAT? A) 22 B) 24 C) 25 D) 26",2
+EXT_Q046,Q46.,"If + means × and × means +, find 4 + 3 × 2. A) 9 B) 14 C) 20 D) 10",2
+EXT_Q047,Q47.,"If - means + and + means -, find 15 - 7. A) 8 B) 22 C) 105 D) 7",2
+EXT_Q048,Q48.,"If @ means ÷, then 20 @ 5 = ? A) 100 B) 4 C) 15 D) 25",2
+EXT_Q049,Q49.,"If # means × and $ means +, find 4 # 3 $ 2. A) 10 B) 14 C) 20 D) 24",2
+EXT_Q050,Q50.,Book : Read :: Food : ? A) Cook B) Eat C) Drink D) Buy,2
