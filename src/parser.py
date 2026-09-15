@@ -25,16 +25,29 @@ def sanitize_extracted_question(raw_text: str) -> str:
     text = str(raw_text)
 
     # 1. Unicode ligature and punctuation normalization
+    # Covers all Latin ligatures commonly produced by pdfplumber/pypdf from
+    # Type1/OpenType PDF fonts used in university exam papers.
     ligatures = {
-        "\ufb01": "fi",
-        "\ufb02": "fl",
+        # Standard Latin ligatures (most common in academic PDFs)
+        "\ufb00": "ff",   # ﬀ  — 'effectiveness', 'different', 'coefficient'
+        "\ufb01": "fi",   # ﬁ  — 'define', 'figure', 'first'
+        "\ufb02": "fl",   # ﬂ  — 'flow', 'float'
+        "\ufb03": "ffi",  # ﬃ  — 'efficient', 'official'
+        "\ufb04": "ffl",  # ﬄ  — 'affluent', 'offline'
+        "\ufb05": "st",   # ﬅ  — 'first', 'last'
+        "\ufb06": "st",   # ﬆ  — alternate st ligature
+        # Smart quotes and typographic punctuation
         "\u2019": "'",
         "\u2018": "'",
         "\u201c": '"',
         "\u201d": '"',
-        "\u2013": "-",
-        "\u2014": "-",
-        "\u00a0": " ",
+        # Dashes and special whitespace
+        "\u2013": "-",   # en-dash
+        "\u2014": "-",   # em-dash
+        "\u2012": "-",   # figure dash
+        "\u00a0": " ",   # non-breaking space
+        "\u2009": " ",   # thin space
+        "\u200b": "",    # zero-width space
     }
     for k, v in ligatures.items():
         text = text.replace(k, v)

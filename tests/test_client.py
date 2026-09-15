@@ -100,5 +100,48 @@ class TestClientAndMockEngine(unittest.TestCase):
         self.assertIn("Exam Balance Index", html_out)
 
 
+class TestWeightedKeywordFallback(unittest.TestCase):
+    """Tests specifically targeting the Data Engineer (rahulkanagaraj) weighted keyword classifier.
+
+    These questions deliberately avoid canonical Bloom's action verbs so that
+    Pass 1 (verb taxonomy) finds nothing and Pass 2 (weighted scoring) takes over.
+    """
+
+    def test_weighted_fallback_investigate_maps_to_analyze(self):
+        """'investigate' is a weighted keyword for Analyze — not in our verb taxonomy."""
+        from src.mock_engine import _weighted_keyword_classify
+        from src.models import BloomsLevel
+        result = _weighted_keyword_classify("investigate the root cause of memory leaks in distributed systems")
+        self.assertIsNotNone(result)
+        level, keywords = result
+        self.assertEqual(level, BloomsLevel.ANALYZE)
+        self.assertIn("investigate", keywords)
+
+    def test_weighted_fallback_propose_maps_to_create(self):
+        """'propose' is in the Create weighted keywords but not the verb taxonomy."""
+        from src.mock_engine import _weighted_keyword_classify
+        from src.models import BloomsLevel
+        result = _weighted_keyword_classify("propose a novel approach to optimise database index performance")
+        self.assertIsNotNone(result)
+        level, _ = result
+        self.assertEqual(level, BloomsLevel.CREATE)
+
+    def test_weighted_fallback_activates_in_full_evaluation(self):
+        """End-to-end: question with only weighted keywords (no verb taxonomy match) still classifies correctly."""
+        # 'discuss' is a weighted keyword for Understand but not in VERB_TAXONOMY
+        q = "In your own words, summarize the meaning of Heisenberg's Uncertainty Principle."
+        result = mock_engine.evaluate(q)
+        self.assertIsInstance(result, QuestionEvaluation)
+        # Should resolve to Understand via weighted keywords ('summarize', 'meaning of')
+        self.assertEqual(result.blooms_level, BloomsLevel.UNDERSTAND)
+
+    def test_weighted_fallback_returns_none_on_empty_text(self):
+        """Weighted classifier should return None when no keywords match at all."""
+        from src.mock_engine import _weighted_keyword_classify
+        result = _weighted_keyword_classify("xyzzy quux lorem ipsum")
+        self.assertIsNone(result)
+
+
 if __name__ == "__main__":
     unittest.main()
+

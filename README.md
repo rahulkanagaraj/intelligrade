@@ -1,10 +1,10 @@
-# IntelliGrade Classifier 🎓
+# IntelliGrade — AI Cognitive Exam Classifier 🎓
 
-[![CI](https://github.com/your-username/intelligrade-classifier/actions/workflows/ci.yml/badge.svg)](https://github.com/your-username/intelligrade-classifier/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![Privacy: Air-Gapped](https://img.shields.io/badge/Privacy-100%25%20Air--Gapped-green.svg)](#privacy--compliance)
 [![Pedagogy: Bloom's Taxonomy](https://img.shields.io/badge/Pedagogy-Revised%20Bloom's-orange.svg)](#pedagogical-framework)
+[![Tests: 23 Passing](https://img.shields.io/badge/Tests-23%20Passing-brightgreen.svg)](#run-test-suite)
 
 > **Air-gapped, privacy-first pedagogical examination evaluation pipeline mapping questions against Revised Bloom's Taxonomy, calibrating objective difficulty (1.0–10.0), and auditing curricular balance.**
 
@@ -60,33 +60,36 @@ IntelliGrade operates strictly over a private, air-gapped institutional Local Ar
 ## 📁 Repository Structure
 
 ```
-intelligrade-classifier/
+intelligrade-classifier/              ← OmniBook Orchestration Node (this repo)
 ├── .github/
 │   └── workflows/
-│       └── ci.yml                 # Automated testing pipeline (Python 3.10-3.12)
+│       └── ci.yml                 # Automated testing pipeline
 ├── data/
-│   └── sample_questions.csv       # Benchmark questions across STEM & humanities
+│   ├── messy_extracted_questions.csv  # 6-question noisy PDF extraction sample
+│   ├── pdf_batch_sample.csv           # 32-question PDF stress test (all 6 Bloom's tiers)
+│   └── sample_questions.csv           # Benchmark questions across STEM & humanities
 ├── docs/
 │   ├── ARCHITECTURE.md            # In-depth topology, threat matrix & latency
 │   └── PEDAGOGICAL_RUBRIC.md      # Psychometric rubric for Bloom's & Difficulty
 ├── scripts/
 │   ├── benchmark_node.py          # CLI latency & throughput benchmark utility
 │   ├── run_app.bat                # 1-click Windows Command Prompt launcher
-│   └── run_app.ps1                # 1-click PowerShell launcher
+│   ├── run_app.ps1                # 1-click PowerShell launcher
+│   └── run_batch_stress_test.py   # End-to-end 32-question pipeline validation
 ├── src/
 │   ├── __init__.py
 │   ├── config.py                  # Dynamic runtime configuration loader
-│   ├── mock_engine.py             # Heuristic rule-based offline classifier
+│   ├── mock_engine.py             # Dual-method offline classifier (verb taxonomy + weighted keywords)
 │   ├── models.py                  # Pydantic schemas for Bloom's & evaluations
 │   ├── ollama_client.py           # Resilient HTTP client with retry backoff
-│   ├── parser.py                  # Multi-stage JSON repair & markdown stripping
+│   ├── parser.py                  # JSON repair, PDF ligature normalization & sanitizer
 │   ├── prompts.py                 # Calibrated psychometric system prompts
 │   └── ui_components.py           # Custom CSS, Plotly gauges, radar charts & HTML dossier
 ├── tests/
 │   ├── __init__.py
-│   ├── test_client.py             # Tests for client retries, mock engine, and health
+│   ├── test_client.py             # Tests for client, mock engine, and weighted fallback
 │   └── test_parser.py             # Tests for malformed JSON repair and recovery
-├── .env.example                   # Environment variable template
+├── .env.example                   # Environment variable template (never commit .env)
 ├── .gitignore                     # Protection for private secrets & caches
 ├── app.py                         # Interactive Streamlit audit dashboard
 ├── LICENSE                        # MIT License
@@ -125,8 +128,8 @@ intelligrade-classifier/
 ### 1. Installation
 ```powershell
 # Clone the repository
-git clone https://github.com/your-username/intelligrade-classifier.git
-cd intelligrade-classifier
+git clone https://github.com/rahulkanagaraj/intelligrade.git
+cd intelligrade
 
 # Install dependencies
 python -m pip install -r requirements.txt

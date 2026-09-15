@@ -1,8 +1,15 @@
-"""Offline pedagogical simulation engine for development and air-gapped testing."""
+"""Offline pedagogical simulation engine for development and air-gapped testing.
+
+Dual-method architecture:
+  1. Primary:  Action-verb taxonomy scan (top-down, first-match — high precision).
+  2. Secondary: Weighted keyword confidence scoring adapted from the Data Engineer
+               module (rahulkanagaraj/intelligrade bulk_processor.py) — activates
+               when no explicit Bloom's verb is found, providing broader coverage.
+"""
 
 import re
 import time
-from typing import List, Tuple
+from typing import Dict, List, Optional, Tuple
 from src.models import BloomsLevel, QuestionEvaluation
 
 # Action verbs mapped to Revised Bloom's Taxonomy cognitive levels
@@ -33,7 +40,89 @@ VERB_TAXONOMY = {
     ],
 }
 
+# ---------------------------------------------------------------------------
+# Secondary classifier: Weighted keyword confidence scoring
+# Adapted from rahulkanagaraj/intelligrade — bulk_processor.py
+# Each Bloom's level is assigned a weight; confidence = match_count × weight.
+# The level with the highest confidence score wins.
+# ---------------------------------------------------------------------------
+BLOOM_WEIGHTED_KEYWORDS: Dict[BloomsLevel, dict] = {
+    BloomsLevel.REMEMBER: {
+        "keywords": [
+            "define", "list", "state", "recall", "name", "identify",
+            "outline", "describe", "what is", "who", "when", "where",
+        ],
+        "weight": 1.0,
+    },
+    BloomsLevel.UNDERSTAND: {
+        "keywords": [
+            "explain", "summarize", "discuss", "interpret", "classify",
+            "contrast", "paraphrase", "in your own words", "why does",
+            "meaning of",
+        ],
+        "weight": 1.2,
+    },
+    BloomsLevel.APPLY: {
+        "keywords": [
+            "calculate", "demonstrate", "implement", "solve", "compute",
+            "apply", "use", "construct", "execute", "determine",
+        ],
+        "weight": 1.4,
+    },
+    BloomsLevel.ANALYZE: {
+        "keywords": [
+            "analyze", "compare", "differentiate", "deconstruct",
+            "investigate", "examine", "categorize", "bottleneck",
+            "root cause", "trade-off",
+        ],
+        "weight": 1.6,
+    },
+    BloomsLevel.EVALUATE: {
+        "keywords": [
+            "critique", "justify", "assess", "validate", "appraise",
+            "judge", "recommend", "ethical", "trade-offs", "evaluate",
+        ],
+        "weight": 1.8,
+    },
+    BloomsLevel.CREATE: {
+        "keywords": [
+            "design", "formulate", "synthesize", "devise", "propose",
+            "develop", "novel", "architecture", "framework",
+            "construct an original",
+        ],
+        "weight": 2.0,
+    },
+}
+
+
+def _weighted_keyword_classify(
+    text_lower: str,
+) -> Optional[Tuple[BloomsLevel, List[str]]]:
+    """Secondary classifier: weighted keyword confidence scoring (Data Engineer module).
+
+    Scans *all* 6 Bloom's levels simultaneously and returns the level with the
+    highest cumulative weighted score.  Returns None if no keywords matched at all.
+    """
+    best_level: Optional[BloomsLevel] = None
+    best_score: float = 0.0
+    best_matches: List[str] = []
+
+    for level, info in BLOOM_WEIGHTED_KEYWORDS.items():
+        matches = [kw for kw in info["keywords"] if kw in text_lower]
+        score = len(matches) * info["weight"]
+        if score > best_score:
+            best_score = score
+            best_level = level
+            best_matches = matches
+
+    if best_level is not None and best_score > 0:
+        return best_level, best_matches
+    return None
+
+
+# ---------------------------------------------------------------------------
 # Domain vocabulary detector for extracting keywords
+# ---------------------------------------------------------------------------
 STOP_WORDS = {
     "what", "is", "the", "a", "an", "and", "or", "to", "in", "of", "for", "with",
     "on", "at", "by", "from", "how", "why", "which", "when", "where", "who",
@@ -98,8 +187,13 @@ class MockPedagogicalEngine:
         )
 
     def _classify_blooms_level(self, text_lower: str) -> Tuple[BloomsLevel, List[str]]:
-        """Identify highest matching cognitive level based on action verb taxonomy."""
-        # Prioritize higher-order thinking skills top-down
+        """Dual-method cognitive level classification.
+
+        Pass 1 — Action-verb taxonomy (top-down, first canonical Bloom's verb wins).
+        Pass 2 — Weighted keyword confidence scoring (Data Engineer fallback).
+        Pass 3 — Structural heuristics for common question patterns.
+        """
+        # --- Pass 1: canonical action-verb taxonomy (high precision) ---
         for level in [
             BloomsLevel.CREATE,
             BloomsLevel.EVALUATE,
@@ -115,7 +209,12 @@ class MockPedagogicalEngine:
             if matched:
                 return level, matched
 
-        # Heuristics based on question structure
+        # --- Pass 2: weighted keyword confidence scoring (Data Engineer module) ---
+        weighted_result = _weighted_keyword_classify(text_lower)
+        if weighted_result is not None:
+            return weighted_result
+
+        # --- Pass 3: structural heuristics for keyword-sparse questions ---
         if text_lower.startswith("why ") or text_lower.startswith("how does ") or "explain" in text_lower:
             return BloomsLevel.UNDERSTAND, ["explain"]
         if text_lower.startswith("what is ") or text_lower.startswith("define ") or text_lower.startswith("name "):
@@ -123,7 +222,7 @@ class MockPedagogicalEngine:
         if "calculate" in text_lower or "find " in text_lower or "value of" in text_lower:
             return BloomsLevel.APPLY, ["calculate"]
 
-        # Default fallback level
+        # --- Default fallback ---
         return BloomsLevel.UNDERSTAND, ["comprehend"]
 
     def _extract_keywords(self, text: str) -> List[str]:

@@ -1,0 +1,33 @@
+raw_id,extracted_text,raw_marks,source_page
+1,"Q1. (a) [2 Marks] Deﬁne what is meant by 'algorithm complexity' and state the Big-O notation for linear search. Page 1 of 8",2,1
+2,"1. (b) State Newton's Second Law of Motion and write its mathematical form. [2 Marks]",2,1
+3,"Q2. (a) Explain how a convolutional layer\nextracts spatial features from an input image tensor. (10 pts) [TURN OVER]",10,2
+4,"2. (b) Discuss the role of the activation function in a feedforward neural network. [5 Marks] Contd...",5,2
+5,"Q3. Calculate the terminal velocity of a 2cm steel sphere (density = 7800 kg/m³) falling through glycerin (viscosity = 1.41 Pa·s). [8 Marks]",8,3
+6,"3. (b) [4 Marks] Compute the time complexity of the merge sort algorithm and justify your answer. Page 2 of 8",4,3
+7,"Q4. (a) Compare and contrast SQL relational schemas\nwith NoSQL document stores under write-heavy workloads. [7 Marks]",7,4
+8,"4. (b) Differentiate between process and thread in the context of operating system scheduling. [4 Marks] [TURN OVER]",4,4
+9,"Q5. Critique the ethical and clinical implications of relying exclusively on p-values (p < 0.05) in multi-centre clinical trials. (10 marks) Contd...",10,5
+10,"5. (b) [5 Marks] Assess the validity of using cross-validation alone to prevent overﬁtting in small medical datasets. Page 3 of 8",5,5
+11,"Q6. Design an air-gapped, zero-trust microservice architecture for ﬁnancial auditing across distributed institutional nodes. [15 Marks]",15,6
+12,"6. (b) Propose a novel consensus algorithm optimised for low-power IoT devices with intermittent connectivity. [10 Marks] [TURN OVER]",10,6
+13,"Q7. (a) [3 Marks] Deﬁne the concept of 'data normalisation' and list the ﬁrst three normal forms. Page 4 of 8",3,7
+14,"7. (b) Name the four ACID properties of database transactions and brieﬂy describe each. [4 Marks]",4,7
+15,"Q8. (a) Explain the diﬀerence between supervised and unsupervised machine learning with appropriate examples. [6 Marks] Contd...",6,8
+16,"8. (b) Summarise the working principle of the k-means clustering algorithm. [4 Marks] [TURN OVER]",4,8
+17,"Q9. Solve the following diﬀerential equation: dy/dx + 2y = e^(-x), given y(0) = 1. Show all steps. [8 Marks]",8,9
+18,"9. (b) [5 Marks] Apply Green's theorem to evaluate ∮C (y dx − x dy) where C is the unit circle. Page 5 of 8",5,9
+19,"Q10. (a) Analyse the time-space trade-oﬀs of using a hash table versus a balanced BST for a dictionary application. [7 Marks]",7,10
+20,"10. (b) Investigate the root causes of cache thrashing in a shared-memory multiprocessor system. [5 Marks] Contd...",5,10
+21,"Q11. Justify why deterministic ﬁnite automata (DFA) and non-deterministic ﬁnite automata (NFA) are computationally equivalent. [6 Marks] [TURN OVER]",6,11
+22,"11. (b) [4 Marks] Evaluate the security and performance implications of using RSA-2048 versus ECC-256 for TLS certiﬁcate signing. Page 6 of 8",4,11
+23,"Q12. (a) Develop a fault-tolerant distributed ﬁle system design that handles network partition events using the CAP theorem. [12 Marks]",12,12
+24,"12. (b) Formulate a mathematical model for predicting student dropout rates using logistic regression. [8 Marks] Contd...",8,12
+25,"Q13. (a) [3 Marks] Identify the main diﬀerences between IPv4 and IPv6 addressing schemes. Page 7 of 8 [TURN OVER]",3,13
+26,"13. (b) Recall and state the ﬁve layers of the TCP/IP networking model. [2 Marks]",2,13
+27,"Q14. Demonstrate how dynamic programming solves the 0/1 knapsack problem. Provide a worked example with n=4 items. [10 Marks]",10,14
+28,"14. (b) [6 Marks] Implement a depth-ﬁrst search (DFS) algorithm in pseudocode and trace its execution on a sample graph. Contd...",6,14
+29,"Q15. (a) Examine the eﬀectiveness of reinforcement learning (RLHF) versus RLSF for aligning large language models with human preferences. [10 Marks] Page 8 of 8",10,15
+30,"15. (b) Appraise the trade-oﬀs of using quantisation (INT8 vs FP16) for deploying transformer models on edge hardware. [7 Marks] [END OF PAPER]",7,15
+31,"Q16. Construct an original experiment design to measure the causal eﬀect of sleep deprivation on working memory using a randomised controlled trial. [12 Marks] Appendix A",12,16
+32,"16. (b) [8 Marks] Synthesise a novel hybrid compression algorithm combining run-length encoding and Huﬀman coding for DNA sequence data. Page 9 of 8",8,16
