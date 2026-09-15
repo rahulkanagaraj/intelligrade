@@ -99,8 +99,8 @@ class OllamaClient:
             "stream": False,
             "format": "json",
             "options": {
-                "temperature": 0.1,  # Low temperature for deterministic pedagogical evaluation
-                "top_p": 0.9,
+                "num_predict": cfg.num_predict,
+                "temperature": cfg.temperature,
             },
         }
 

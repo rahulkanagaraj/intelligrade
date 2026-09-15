@@ -21,6 +21,8 @@ class AppConfig:
     request_timeout: int = int(os.getenv("REQUEST_TIMEOUT", "30"))
     max_retries: int = int(os.getenv("MAX_RETRIES", "3"))
     backoff_factor: float = float(os.getenv("BACKOFF_FACTOR", "1.5"))
+    num_predict: int = int(os.getenv("NUM_PREDICT", "150"))
+    temperature: float = float(os.getenv("TEMPERATURE", "0.1"))
 
     def get_base_url(self) -> str:
         """Derive base server URL (e.g. http://192.168.1.50:11434)."""
@@ -46,6 +48,8 @@ def update_config(
     auto_mock_fallback: bool | None = None,
     request_timeout: int | None = None,
     max_retries: int | None = None,
+    num_predict: int | None = None,
+    temperature: float | None = None,
 ) -> AppConfig:
     """Update runtime configuration dynamically."""
     global config
@@ -61,4 +65,8 @@ def update_config(
         config.request_timeout = request_timeout
     if max_retries is not None:
         config.max_retries = max_retries
+    if num_predict is not None:
+        config.num_predict = num_predict
+    if temperature is not None:
+        config.temperature = temperature
     return config
