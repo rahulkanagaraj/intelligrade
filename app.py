@@ -51,12 +51,21 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+BANK_2400_PATH = os.path.join(DATA_DIR, "question_bank_2400.csv")
+
 # Helper: Ensure Datasets Exist
 @st.cache_data
 def load_blooms_dataset():
     if not os.path.exists(BLOOMS_CSV_PATH):
         generate_blooms_dataset(target_count=8750)
     return pd.read_csv(BLOOMS_CSV_PATH)
+
+@st.cache_data
+def load_bank_2400_dataset():
+    if not os.path.exists(BANK_2400_PATH):
+        from build_full_question_bank import generate_full_bank
+        generate_full_bank()
+    return pd.read_csv(BANK_2400_PATH)
 
 @st.cache_data
 def load_sample_pdf_path():

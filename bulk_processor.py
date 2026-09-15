@@ -125,6 +125,10 @@ class BulkQuestionProcessor:
                     res["marks"] = q_item["marks"]
                 if "blooms_level" in q_item:
                     res["actual_blooms_level"] = q_item["blooms_level"]
+                if "subject" in q_item:
+                    res["subject"] = q_item["subject"]
+                if "question_number" in q_item:
+                    res["question_number"] = q_item["question_number"]
                 processed_records.append(res)
             except Exception as err:
                 errors_count += 1
