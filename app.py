@@ -20,7 +20,7 @@ importlib.reload(src.parser)
 importlib.reload(src.ollama_client)
 importlib.reload(src.ui_components)
 
-from src.config import get_config, update_config
+from src.config import create_fresh_config, get_config, update_config
 from src.models import (
     BLOOMS_COLORS,
     BLOOMS_DESCRIPTIONS,
@@ -63,7 +63,7 @@ SAMPLE_QUESTIONS = {
 
 
 def main():
-    cfg = get_config()
+    cfg = create_fresh_config()
 
     # --- SIDEBAR: NODE INFRASTRUCTURE & SETTINGS ---
     with st.sidebar:
@@ -127,6 +127,7 @@ def main():
             if st.button("Save Config", use_container_width=True):
                 update_config(ollama_server_url=endpoint_input, model_name=model_input)
                 st.success("Config updated!")
+                st.rerun()
         with col_cfg2:
             if st.button("Ping Node", use_container_width=True):
                 with st.spinner("Pinging host..."):

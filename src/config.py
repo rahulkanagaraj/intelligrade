@@ -5,18 +5,18 @@ from dataclasses import dataclass
 from pathlib import Path
 from dotenv import load_dotenv
 
-# Load .env file from project root if it exists
+# Load .env file from project root if it exists, forcing override
 project_root = Path(__file__).resolve().parent.parent
 env_path = project_root / ".env"
-load_dotenv(dotenv_path=env_path)
+load_dotenv(dotenv_path=env_path, override=True)
 
 
 @dataclass
 class AppConfig:
     """Application configuration container."""
-    ollama_server_url: str = os.getenv("OLLAMA_SERVER_URL", "http://localhost:11434/api/generate")
+    ollama_server_url: str = os.getenv("OLLAMA_SERVER_URL", "http://192.168.137.113:11434/api/generate")
     model_name: str = os.getenv("MODEL_NAME", "llama3:8b")
-    mock_mode: bool = os.getenv("MOCK_MODE", "true").lower() in ("true", "1", "yes")
+    mock_mode: bool = os.getenv("MOCK_MODE", "false").lower() in ("true", "1", "yes")
     auto_mock_fallback: bool = os.getenv("AUTO_MOCK_FALLBACK", "true").lower() in ("true", "1", "yes")
     request_timeout: int = int(os.getenv("REQUEST_TIMEOUT", "30"))
     max_retries: int = int(os.getenv("MAX_RETRIES", "3"))
@@ -25,15 +25,30 @@ class AppConfig:
     temperature: float = float(os.getenv("TEMPERATURE", "0.1"))
 
     def get_base_url(self) -> str:
-        """Derive base server URL (e.g. http://192.168.1.50:11434)."""
+        """Derive base server URL (e.g. http://192.168.137.113:11434)."""
         url = self.ollama_server_url.strip()
         if "/api/" in url:
             return url.split("/api/")[0]
         return url.rstrip("/")
 
 
+def create_fresh_config() -> AppConfig:
+    load_dotenv(dotenv_path=env_path, override=True)
+    return AppConfig(
+        ollama_server_url=os.getenv("OLLAMA_SERVER_URL", "http://192.168.137.113:11434/api/generate"),
+        model_name=os.getenv("MODEL_NAME", "llama3:8b"),
+        mock_mode=os.getenv("MOCK_MODE", "false").lower() in ("true", "1", "yes"),
+        auto_mock_fallback=os.getenv("AUTO_MOCK_FALLBACK", "true").lower() in ("true", "1", "yes"),
+        request_timeout=int(os.getenv("REQUEST_TIMEOUT", "30")),
+        max_retries=int(os.getenv("MAX_RETRIES", "3")),
+        backoff_factor=float(os.getenv("BACKOFF_FACTOR", "1.5")),
+        num_predict=int(os.getenv("NUM_PREDICT", "150")),
+        temperature=float(os.getenv("TEMPERATURE", "0.1")),
+    )
+
+
 # Singleton global config instance
-config = AppConfig()
+config = create_fresh_config()
 
 
 def get_config() -> AppConfig:
