@@ -173,8 +173,10 @@ def main():
         btn_analyze = st.button("🚀 Analyze Cognitive Metrics", type="primary", use_container_width=True)
 
         if btn_analyze:
-            if not question_input.strip():
-                st.warning("Please enter a question before analyzing.")
+            # Guard against empty/blank input BEFORE calling the model
+            if not question_input or not question_input.strip():
+                st.error("Please enter a question before classifying.")
+                st.session_state["single_result"] = None
             else:
                 with st.spinner("Classifying cognitive depth and calibrating difficulty metrics..."):
                     st.session_state["single_result"] = client.evaluate_question(question_input)
@@ -336,19 +338,25 @@ def main():
         btn_run_batch = st.button("⚡ Run Batch Cognitive Audit", type="primary", disabled=len(questions_to_process) == 0)
 
         if btn_run_batch:
-            progress_bar = st.progress(0)
-            status_text = st.empty()
+            # Guard against empty/blank input BEFORE calling the model
+            valid_questions = [q for q in questions_to_process if q and q.strip()]
+            if not valid_questions:
+                st.error("Please provide at least one valid non-empty question before running batch evaluation.")
+                st.session_state["batch_results"] = None
+            else:
+                progress_bar = st.progress(0)
+                status_text = st.empty()
 
-            def update_ui(current, total, item_res):
-                progress_bar.progress(current / total)
-                status_text.text(f"Evaluated question {current}/{total}: {item_res.question[:45]}...")
+                def update_ui(current, total, item_res):
+                    progress_bar.progress(current / total)
+                    status_text.text(f"Evaluated question {current}/{total}: {item_res.question[:45]}...")
 
-            results = client.evaluate_batch(
-                questions_to_process,
-                progress_callback=update_ui,
-            )
-            st.session_state["batch_results"] = results
-            status_text.success(f"Batch evaluation complete! {len(results)} questions audited.")
+                results = client.evaluate_batch(
+                    valid_questions,
+                    progress_callback=update_ui,
+                )
+                st.session_state["batch_results"] = results
+                status_text.success(f"Batch evaluation complete! {len(results)} questions audited.")
 
         if "batch_results" in st.session_state and st.session_state["batch_results"]:
             batch_results = st.session_state["batch_results"]

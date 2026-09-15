@@ -46,6 +46,19 @@ class MockPedagogicalEngine:
 
     def evaluate(self, question: str) -> QuestionEvaluation:
         """Analyze question text using cognitive linguistic heuristics."""
+        if not question or not question.strip():
+            return QuestionEvaluation(
+                question="",
+                blooms_level=BloomsLevel.UNDERSTAND,
+                blooms_level_index=2,
+                difficulty_score=1.0,
+                pedagogical_reasoning="Empty or whitespace-only question submitted.",
+                improvement_suggestions="Please enter an examination question to evaluate.",
+                evaluation_source="mock",
+                latency_seconds=0.0,
+                error_message="Question text cannot be blank.",
+            )
+
         start_time = time.time()
         text = question.strip()
         text_lower = text.lower()

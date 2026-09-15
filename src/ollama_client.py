@@ -73,6 +73,18 @@ class OllamaClient:
         Evaluate single question against Revised Bloom's Taxonomy.
         Enforces payload constraints: stream=False, format=json.
         """
+        if not question_text or not question_text.strip():
+            return QuestionEvaluation(
+                question="",
+                blooms_level="Understand",
+                blooms_level_index=2,
+                difficulty_score=1.0,
+                pedagogical_reasoning="Empty or whitespace-only question submitted.",
+                improvement_suggestions="Please enter an examination question to evaluate.",
+                evaluation_source="client_guard",
+                error_message="Question text cannot be blank.",
+            )
+
         cfg = get_config()
         use_mock = force_mock if force_mock is not None else cfg.mock_mode
 
